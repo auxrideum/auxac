@@ -1,0 +1,133 @@
+#include "main.h"
+
+extern void* pAMXFunctions;
+
+unsigned long FUNC_GetPacketID = NULL;
+
+static SubHook GetPacketID_hook;
+
+typedef int(__stdcall* RecvFrom_t)(SOCKET s, void* rakPeer, int* errorCode);
+typedef BYTE(*getPacketId)(Packet* p);
+
+RecvFrom_t fnRecvFrom = NULL;
+
+int __stdcall RecvFrom(SOCKET s, void* rakPeer, int* errorCode) {
+	char buf[576];
+	int len = 0;
+	len = recvfrom(s, buf, sizeof(buf), 0, NULL, NULL);
+	
+	if (len > 0)
+		printf("Received: %s\n", buf);
+
+	return fnRecvFrom(s, rakPeer, errorCode);
+}
+
+static BYTE HOOK_GetPacketID(Packet* p)
+{
+	SubHook::ScopedRemove remove(&GetPacketID_hook);
+
+	BYTE packetId = GetPacketID(p);
+
+	if (packetId == 0xFF) {
+		return 0xFF;
+	}
+
+	if (packetId == iPacketRPC) {
+
+		RakNet::BitStream bsData(&p->data[1], p->length - 1, false);
+		int iRpcId;
+
+		bsData.Read(iRpcId);
+
+		pHandlePacket->Process(iRpcId, bsData, p->playerIndex);
+
+		if (GetPacketID_hook.GetTrampoline() == 0)
+		{
+			return 0xFF;
+		}
+
+	}
+
+	if (GetPacketID_hook.GetTrampoline() == 0) {
+		return packetId;
+	} 
+	else {
+		return ((getPacketId)GetPacketID_hook.GetTrampoline())(p);
+	}
+}
+
+BYTE GetPacketID(Packet* p)
+{
+	if (p == 0) 
+		return 255;
+
+	if ((unsigned char)p->data[0] == 36)
+	{
+		assert(p->length > sizeof(unsigned char) + sizeof(unsigned long));
+		return (unsigned char)p->data[sizeof(unsigned char) + sizeof(unsigned long)];
+	}
+	else return (unsigned char)p->data[0];
+}
+
+bool FindGetPacketIdAddress()
+{
+#ifdef _WIN32																	
+	FUNC_GetPacketID = FindPattern("\x8B\x44\x24\x04\x85\xC0\x75\x03\x0C\xFF\xC3", "xxxxxxx???x");
+#else
+	FUNC_GetPacketID = FindPattern("\x55\xB8\x00\x00\x00\x00\x89\xE5\x8B\x55\x00\x85\xD2", "xx????xxxx?xx");
+#endif
+
+	return FUNC_GetPacketID > 0;
+}
+
+void InstallGetPacketIdHook()
+{
+	if (FUNC_GetPacketID != NULL)
+	{
+		GetPacketID_hook.Install((void*)FUNC_GetPacketID, (void*)HOOK_GetPacketID);
+	//	fnRecvFrom = (RecvFrom_t)DetourFunction((PBYTE)0x462B40, (BYTE*)RecvFrom);
+		
+
+
+		sampgdk_logprintf("Installed at: 0x%x", FUNC_GetPacketID);
+	}
+	else
+	{
+		sampgdk_logprintf("Error: Invalid SA-MP server version found. (Or YSF loaded before auxac)");
+	}
+}
+
+/* Find the address related to GetPacket */
+
+bool memory_compare(const BYTE* data, const BYTE* pattern, const char* mask)
+{
+	for (; *mask; ++mask, ++data, ++pattern)
+	{
+		if (*mask == 'x' && *data != *pattern)
+			return false;
+	}
+	return (*mask) == NULL;
+}
+
+unsigned long FindPattern(const char* pattern, const char* mask)
+{
+	unsigned long i;
+	unsigned long size;
+	unsigned long address;
+#ifdef _WIN32
+	MODULEINFO info = { 0 };
+
+	address = (unsigned long)GetModuleHandle(NULL);
+	GetModuleInformation(GetCurrentProcess(), GetModuleHandle(NULL), &info, sizeof(MODULEINFO));
+	size = (unsigned long)info.SizeOfImage;
+#else
+	address = 0x804b480; // around the elf base
+	size = 0x8128B80 - address;
+#endif
+	for (i = 0; i < size; ++i)
+	{
+		if (memory_compare((BYTE*)(address + i), (BYTE*)pattern, mask))
+			return (unsigned long)(address + i);
+	}
+	return 0;
+}

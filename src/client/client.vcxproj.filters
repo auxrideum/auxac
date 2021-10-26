@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="CMultiplayerSA.cpp" />
+    <ClCompile Include="QuickLoad.cpp" />
+    <ClCompile Include="CMiscFunctions.cpp" />
+    <ClCompile Include="lib\RakNet\BitStream.cpp">
+      <Filter>lib\RakNet</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\RakNet\HookedRakClient.cpp">
+      <Filter>lib\RakNet</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\RakNet\RakClient.cpp">
+      <Filter>lib\RakNet</Filter>
+    </ClCompile>
+    <ClCompile Include="CPatchGameSA.cpp" />
+    <ClCompile Include="CHookFunctions.cpp" />
+    <ClCompile Include="CModulesList.cpp" />
+    <ClCompile Include="CHandlePacket.cpp" />
+    <ClCompile Include="CD3D9Hook.cpp" />
+    <ClCompile Include="lib\imgui\imgui.cpp">
+      <Filter>lib\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\imgui\imgui_demo.cpp">
+      <Filter>lib\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\imgui\imgui_draw.cpp">
+      <Filter>lib\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\imgui\imgui_impl_dx9.cpp">
+      <Filter>lib\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\imgui\imgui_impl_win32.cpp">
+      <Filter>lib\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\imgui\imgui_widgets.cpp">
+      <Filter>lib\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="CCore.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h" />
+    <ClInclude Include="CMultiplayerSA.h" />
+    <ClInclude Include="QuickLoad.h" />
+    <ClInclude Include="CMiscFunctions.h" />
+    <ClInclude Include="lib\RakNet\BitStream.h">
+      <Filter>lib\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\RakNet\HookedRakClient.h">
+      <Filter>lib\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\RakNet\RakClient.h">
+      <Filter>lib\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="CPatchGameSA.h" />
+    <ClInclude Include="CHookFunctions.h" />
+    <ClInclude Include="CModulesList.h" />
+    <ClInclude Include="..\Shared\md5\md5.h" />
+    <ClInclude Include="CHandlePacket.h" />
+    <ClInclude Include="CD3D9Hook.h" />
+    <ClInclude Include="lib\imgui\imconfig.h">
+      <Filter>lib\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\imgui\imgui.h">
+      <Filter>lib\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\imgui\imgui_impl_dx9.h">
+      <Filter>lib\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\imgui\imgui_impl_win32.h">
+      <Filter>lib\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\imgui\imgui_internal.h">
+      <Filter>lib\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\imgui\imstb_rectpack.h">
+      <Filter>lib\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\imgui\imstb_textedit.h">
+      <Filter>lib\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\imgui\imstb_truetype.h">
+      <Filter>lib\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\curl\include\curl\curl.h">
+      <Filter>lib\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\curl\include\curl\curlver.h">
+      <Filter>lib\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\curl\include\curl\easy.h">
+      <Filter>lib\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\curl\include\curl\mprintf.h">
+      <Filter>lib\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\curl\include\curl\multi.h">
+      <Filter>lib\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\curl\include\curl\stdcheaders.h">
+      <Filter>lib\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\curl\include\curl\system.h">
+      <Filter>lib\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\curl\include\curl\typecheck-gcc.h">
+      <Filter>lib\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\curl\include\curl\urlapi.h">
+      <Filter>lib\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="CCore.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="lib">
+      <UniqueIdentifier>{e22d4a49-e462-4d6a-9ae6-61aadb49d2cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib\RakNet">
+      <UniqueIdentifier>{9065854c-0012-4a83-9325-a1e39e88a7ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib\imgui">
+      <UniqueIdentifier>{bf2287d6-1695-4429-9079-3a1d0828ced5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib\curl">
+      <UniqueIdentifier>{2df9a49a-5638-45bf-a567-7dc49e24aeb7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

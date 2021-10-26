@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="lib\samp-plugin-sdk\amxplugin.cpp">
+      <Filter>lib\samp-plugin-sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\RakNet\BitStream.cpp">
+      <Filter>lib\RakNet</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\subhook\subhook.c">
+      <Filter>lib\subhook</Filter>
+    </ClCompile>
+    <ClCompile Include="CVerifiedPlayer.cpp" />
+    <ClCompile Include="natives.cpp" />
+    <ClCompile Include="CHandlePacket.cpp" />
+    <ClCompile Include="callback.cpp" />
+    <ClCompile Include="lib\sampgdk\sampgdk.c">
+      <Filter>lib\sampgdk</Filter>
+    </ClCompile>
+    <ClCompile Include="CHookServerFunctions.cpp" />
+    <ClCompile Include="utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h" />
+    <ClInclude Include="lib\samp-plugin-sdk\plugin.h">
+      <Filter>lib\samp-plugin-sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\samp-plugin-sdk\plugincommon.h">
+      <Filter>lib\samp-plugin-sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\samp-plugin-sdk\amx\amx.h">
+      <Filter>lib\samp-plugin-sdk\amx</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\samp-plugin-sdk\amx\getch.h">
+      <Filter>lib\samp-plugin-sdk\amx</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\samp-plugin-sdk\amx\sclinux.h">
+      <Filter>lib\samp-plugin-sdk\amx</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\RakNet\BitStream.h">
+      <Filter>lib\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\RakNet\raknet.h">
+      <Filter>lib\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\subhook\subhook.h">
+      <Filter>lib\subhook</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\subhook\subhook_private.h">
+      <Filter>lib\subhook</Filter>
+    </ClInclude>
+    <ClInclude Include="CVerifiedPlayer.h" />
+    <ClInclude Include="natives.h" />
+    <ClInclude Include="CHandlePacket.h" />
+    <ClInclude Include="callback.h" />
+    <ClInclude Include="lib\sampgdk\sampgdk.h">
+      <Filter>lib\sampgdk</Filter>
+    </ClInclude>
+    <ClInclude Include="CHookServerFunctions.h" />
+    <ClInclude Include="utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="lib">
+      <UniqueIdentifier>{e0ee68a7-d8cc-4217-9e82-6431ec5195d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib\sampgdk">
+      <UniqueIdentifier>{7f8db63d-c146-47ea-86a6-045016a112f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib\samp-plugin-sdk">
+      <UniqueIdentifier>{c7b82278-9d3f-4000-a9a2-55fc48bd79d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib\samp-plugin-sdk\amx">
+      <UniqueIdentifier>{8853adc7-e8d8-462a-9e88-e1c0a7582e75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib\RakNet">
+      <UniqueIdentifier>{1bc89d6a-4534-4727-a515-65da6fc17f2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib\subhook">
+      <UniqueIdentifier>{80bb0fdf-e516-41c6-bdb5-8d58f13e6e28}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="plugin.def" />
+  </ItemGroup>
+</Project>
